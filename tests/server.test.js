@@ -36,7 +36,7 @@ test("GET /api/books", async () => {
 test("POST /api/books", async () => {
   const data = { bookAuthor: "Donald Knuth", bookTitle: "Algorithms" };
 
-  await supertest(app).book("/api/books")
+  await supertest(app).post("/api/books")
     .send(data)
     .expect(200)
     .then(async (response) => {
