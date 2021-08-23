@@ -100,3 +100,17 @@ test("DELETE /api/books/:id", async () => {
       expect(await Book.findOne({ _id: book.id })).toBeFalsy();
     });
 });
+
+test("DELETE /api/books/:id", async () => {
+  const book = await Book.create({
+    bookAuthor: "Donald Knuth",
+    bookTitle: "Algorithms",
+  });
+
+  await supertest(app)
+    .delete("/api/" + book.id)
+    .expect(204)
+    .then(async () => {
+      expect(await Book.findOne({ _id: book.id })).toBeFalsy();
+    });
+});
